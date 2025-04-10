@@ -2,11 +2,8 @@ services:
   - type: web
     name: piston-api
     env: docker
-    repo: https://github.com/Divyesh-Chauhan/piston
-    branch: main
     plan: free
-    dockerContext: .
+    repo: https://github.com/<your-username>/piston
+    branch: master
     dockerfilePath: ./Dockerfile
-    buildCommand: ""
-    startCommand: "docker-compose up"
     autoDeploy: true
