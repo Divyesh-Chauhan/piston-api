@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Copy requirements and install
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install fastapi uvicorn requests pydantic
+
 
 # Copy rest of the code
 COPY . .
