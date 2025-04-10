@@ -3,7 +3,7 @@ services:
     name: piston-api
     env: docker
     plan: free
-    repo: https://github.com/<your-username>/piston
+    repo: https://github.com/Divyesh-Chauhan/piston
     branch: master
     dockerfilePath: ./Dockerfile
     autoDeploy: true
