@@ -1,12 +1,24 @@
-FROM docker:20.10.16-dind
+FROM python:3.10-slim
 
-# Install required dependencies
-RUN apk add --no-cache py3-pip python3 make libffi-dev openssl-dev gcc musl-dev python3-dev
+# Install required system packages
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    git \
+    curl \
+    && apt-get clean
 
-# Install docker-compose properly
-RUN pip3 install docker-compose
-
+# Set working directory
 WORKDIR /app
+
+# Copy requirements and install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy rest of the code
 COPY . .
 
-CMD ["docker-compose", "up"]
+# Expose port
+EXPOSE 2000
+
+# Start the API
+CMD ["python", "main.py"]
